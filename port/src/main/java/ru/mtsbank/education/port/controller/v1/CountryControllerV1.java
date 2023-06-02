@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
-import ru.mtsbank.education.port.entity.Country;
+import ru.mtsbank.education.port.dto.CountryDto;
+import ru.mtsbank.education.port.mapper.CountryMapper;
 import ru.mtsbank.education.port.service.CountryService;
 
 @RestController
@@ -17,10 +18,11 @@ import ru.mtsbank.education.port.service.CountryService;
 public class CountryControllerV1 {
 
 	private final CountryService service;
+	private final CountryMapper mapper;
 
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Country> fetchAllCountries() {
-		return service.fetchAll();
+	public List<CountryDto> fetchAllCountries() {
+		return mapper.map(service.fetchAll());
 	}
 
 }

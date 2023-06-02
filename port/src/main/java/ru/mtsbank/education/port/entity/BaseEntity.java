@@ -47,7 +47,7 @@ abstract class BaseEntity implements Serializable {
 			return true;
 		if (obj == null)
 			return false;
-		if (Hibernate.getClass(this) != Hibernate.getClass(obj.getClass()))
+		if (Hibernate.getClass(this) != Hibernate.getClass(obj))
 			return false;
 		BaseEntity other = (BaseEntity) obj;
 		return id != null && Objects.equals(id, other.id);
